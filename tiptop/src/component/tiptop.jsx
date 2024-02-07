@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 // import { useAtom } from "jotai";
 // import { globaldata } from "./store";
-import sliderImg1 from "../Images/Nature.jpg";
+// import Nature from "../Images/Nature.jpg";
 const Tiptop = () => {
   const [bestseller, setBestseller] = useState([]);
 
@@ -13,19 +13,26 @@ const Tiptop = () => {
   const [nowtrending, setNowtrending] = useState([]);
 
   // const [hovertrending, setHoverTrending] = useState(null);
-  const sliderImages = [sliderImg1,sliderImg1,sliderImg1,sliderImg1];
+
+  const [images, setImages] = useState(0);
+
+  // const sliderImages = [Nature.jpg];
+  // console.log(sliderImages);
+  // const nextSlide = () => {
+  //   setImages((images + 1) % sliderImages.length);
+  // };
 
   const getImgage = bestseller?.filter((elm) => {
     const getImages1 = elm.popular === "true";
     return getImages1;
   });
-  console.log(getImgage);
+  // console.log(getImgage);
 
   const trendingimg = nowtrending?.filter((elm) => {
     const trending1 = elm.popular === "false";
     return trending1;
   });
-  console.log(trendingimg);
+  // console.log(trendingimg);
   useEffect(() => {
     axios
       .get("data.json")
@@ -199,7 +206,7 @@ const Tiptop = () => {
         <div>
           <div className="grid  grid-flow-col gap-4 ">
             {trendingimg
-              .slice(0, 5)
+              .slice(0, 7)
               // .filter((elm) => elm.id >= "Eyes_3" && elm.id <= "Eyes_7")
               .map((elm, index) => (
                 <div key={elm.id}>
@@ -393,12 +400,24 @@ const Tiptop = () => {
         </div>
         {/* images */}
         {/* <div>
+          <div className="border  border-green-500 h-[50vh]">
+            {setImages?.map((elm, index) => (
+              <div key={index}>
+                <div className=" ">
+                  <img src={elm} alt="" className=" " />
+                  <div> </div>
+                </div>
+              </div>
+            ))}
+          </div>
           <div>
-            {
-               sliderImages.map((elm,index)=>)
-            }</div>
+            <button onClick={nextSlide}>Next Slide</button>
+          </div>
         </div> */}
       </div>
+
+      {/* 9 */}
+      <div></div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
 const Bestsellers = () => {
-  return <div>best</div>;
+  return <div>bestseller</div>;
 };
 export default Bestsellers;

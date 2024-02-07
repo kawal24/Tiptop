@@ -40,7 +40,7 @@
  } */
 
  .bestsellerimg{
-   object-fit: cover;
+   object-fit:cover;
    width: max-content;
    height: 30vh;
    display:flex;
@@ -48,7 +48,7 @@
     align-items: center;
     position:relative;
     bottom: 5px;
-    /* border: 1px solid ; */
+    border: 1px solid ;
  
         
  }

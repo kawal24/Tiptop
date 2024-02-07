@@ -10,6 +10,7 @@ import Facepage from "./component/face";
 import Lipspage from "./component/lips";
 import Eyespage from "./component/eyes";
 import Tiptop from "./component/tiptop";
+import Footer from "./component/footer";
 // import Sidebar from "./component/sidebar";
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
         <Route path="/lips" element={<Lipspage />} />
         <Route path="/eyes" element={<Eyespage />} />
       </Routes>
+
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
