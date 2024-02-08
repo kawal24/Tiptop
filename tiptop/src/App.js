@@ -10,7 +10,7 @@ import Facepage from "./component/face";
 import Lipspage from "./component/lips";
 import Eyespage from "./component/eyes";
 import Tiptop from "./component/tiptop";
-import Footer from "./component/footer";
+// import Footer from "./component/footer";
 // import Sidebar from "./component/sidebar";
 
 function App() {
@@ -32,9 +32,7 @@ function App() {
         <Route path="/eyes" element={<Eyespage />} />
       </Routes>
 
-      <div>
-        <Footer />
-      </div>
+      <div>{/* <Footer /> */}</div>
     </div>
   );
 }
