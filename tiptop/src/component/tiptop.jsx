@@ -12,7 +12,7 @@ const Tiptop = () => {
 
   const [nowtrending, setNowtrending] = useState([]);
 
-  // const [hovertrending, setHoverTrending] = useState(null);
+  const [hovertrending, setHoverTrending] = useState(null);
 
   const [images, setImages] = useState(0);
 
@@ -32,7 +32,7 @@ const Tiptop = () => {
     const trending1 = elm.popular === "false";
     return trending1;
   });
-  // console.log(trendingimg);
+  console.log(trendingimg);
   useEffect(() => {
     axios
       .get("data.json")
@@ -103,17 +103,20 @@ const Tiptop = () => {
           </div>
         </div>
 
-        <div className=" w-[100%] h-[60vh] flex justify-around">
+        <div className=" grid  grid-flow-col gap-4 ">
           <div className="grid  grid-flow-col gap-5">
             {getImgage
-              .slice(0, 6)
+              .slice(-5, 9)
 
               ?.map((elm, index) => (
                 <div key={elm?.id}>
-                  <div className=" w-[70%]  h-[20vh] flex justify-center cursor-pointer  ">
+                  <div
+                    className=" flex justify-center text-center cursor-pointer gap-5  h-[50vh] flex-col
+ "
+                  >
                     {/* <div>{elm?.id}</div> */}
                     <div
-                      className=" border border-red-500 h-[50vh] max-w-lg  "
+                      className="   h-[50vh] w-[80%]  border border-red-500"
                       onMouseEnter={() => setHoverImg(index)}
                       onMouseLeave={() => setHoverImg(null)}
                     >
@@ -206,33 +209,52 @@ const Tiptop = () => {
         <div>
           <div className="grid  grid-flow-col gap-4 ">
             {trendingimg
-              .slice(0, 7)
+              .slice(1, 8)
               // .filter((elm) => elm.id >= "Eyes_3" && elm.id <= "Eyes_7")
               .map((elm, index) => (
                 <div key={elm.id}>
                   <div
-                    className="  border border-black flex justify-center text-center cursor-pointer 
+                    className="   flex justify-center text-center cursor-pointer gap-5  h-[50vh] flex-col
                     "
                   >
-                    <div>
+                    <div
+                      className=" "
+                      onMouseEnter={() => setHoverTrending(index)}
+                      onMouseLeave={() => setHoverTrending(null)}
+                    >
                       <img src={elm.img} alt="img" className="nowtrending" />
+
+                      <div className="  h-[20vh] ">
+                        <div className="flex flex-col justify-center text-center mt-6 ">
+                          <div className="text-black">{elm?.name}</div>
+                          <div>{elm?.Price}</div>
+                        </div>
+                        <div>{elm?.popular}</div>
+                        <div className="flex justify-center text-center  ">
+                          {hovertrending === index && (
+                            <button className=" border  py-2 px-5 text-black hover:bg-black  hover:text-white">
+                              Add to Card
+                            </button>
+                          )}
+                        </div>
+                      </div>
                     </div>
+
+                    {/*  */}
                   </div>
-                  <div>{/* <img src={elm?.img2} alt="" /> */}</div>
-                  <div className="flex flex-col justify-center text-center mt-6 ">
+
+                  {/* <div className="flex flex-col justify-center text-center mt-6 ">
                     <div className="text-black">{elm?.name}</div>
                     <div>{elm?.Price}</div>
                   </div>
                   <div>{elm?.popular}</div>
                   <div className="flex justify-center text-center  ">
-                    {/* {nowtrending === index && ( */}
-                    <button className=" border py-2 px-5 text-black hover:bg-black  hover:text-white">
-                      Add to Card
-                    </button>
-                    {/* )} */}
-
-                    {/* <div>kkk</div> */}
-                  </div>
+                    {hovertrending === index && (
+                      <button className=" border py-2 px-5 text-black hover:bg-black  hover:text-white">
+                        Add to Card
+                      </button>
+                    )}
+                  </div> */}
                 </div>
               ))}
           </div>
