@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
+import axios from "axios";
 const Facepage = () => {
+  const [faceproducts, setFaceProducts] = useState([]);
+  const [hoverfaceproducts, setHoverFaceProducts] = useState(null);
+
+  const faceimages = faceproducts?.filter((elm) => {
+    const faceimages1 = elm.popular === "false";
+    return faceimages1;
+  });
+  console.log(faceimages);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("data.json")
+      .then((res) => {
+        console.log(res);
+        setFaceProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return (
-    <div className=" border h-[100vh]   relative">
+    <div className="  h-[100vh]   relative">
       <div className="flex ">
         {/* 1 */}
-        <div className="h-[100vh] w-[15%] mt-24 fixed ">
+        <div className="h-[100vh] w-[15%] mt-16 ">
           <div className="flex  mt-6 ml-4 gap-2">
             <p>Home</p>
             <svg
@@ -53,24 +74,51 @@ const Facepage = () => {
         </div>
 
         {/* 2 */}
-        <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-80">
+        <div className="flex  h-[100vh]  w-[100%] flex-col  mt-36 ml-36  relative right-10 ">
           <img
-            className="w-[95%] h-[50vh]  "
+            className="w-screen h-[50vh]  "
             src=" https://static.wixstatic.com/media/2e2a49_10c614d89f2c46ce98a15cfc0b5909f3~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_10c614d89f2c46ce98a15cfc0b5909f3~mv2.jpg"
             alt=""
           />
 
-          <div className="flex flex-col justify-start  gap-20   mt-20">
-            <b className=" flex justify-satrt font-Cambria text-5xl  ">
-              All Products
-            </b>
+          <div className="flex flex-col justify-start  gap-20   mt-10">
+            <b className=" flex justify-satrt font-serif	 text-5xl  ">Face</b>
 
             <p className="text-xs flex   ">6 Products</p>
           </div>
 
-          <div className=" mt-10">
-            <div className="border border-green-500 h-[90vh] w-[100%]   ">
-              hjk
+          <div className=" mt-10 relative ">
+            <div className="  ">
+              <div className="flex flex-wrap  h-[40vh] w-[100%] gap-10 grid grid-cols-5 ">
+                {faceimages.slice(3, 9)?.map((elm, index) => (
+                  <div
+                    className=""
+                    onMouseEnter={() => setHoverFaceProducts(index)}
+                    onMouseLeave={() => setHoverFaceProducts(null)}
+                  >
+                    <img
+                      src={hoverfaceproducts === index ? elm.img2 : elm.img}
+                      alt={elm.name}
+                      className="bg-cover h-[25vh] w-[100%]"
+                    />
+                    <div className=" flex justify-center text-center">
+                      {elm.name}
+                    </div>
+                    <div className="flex justify-center"> {elm.Price}</div>
+
+                    <div className="flex justify-center text-center">
+                      {hoverfaceproducts === index && (
+                        <button
+                          className="
+                            border  flex  border-black  mt-5 px-4 py-3 ml-6 hover:bg-black hover:text-white"
+                        >
+                          Add to card
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

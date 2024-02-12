@@ -41,17 +41,20 @@
 
  .bestsellerimg{
    object-fit:cover;
-   width: max-content;
+   /* width: max-content; */
+   /* width: 80%; */
    height: 30vh;
    display:flex;
     justify-content: center;
     align-items: center;
     position:relative;
-    bottom: 5px;
+    /* bottom: 5px; */
     border: 1px solid ;
- 
-        
+    overflow: hidden;    
  }
+
+
+
   .nowtrending{
    object-fit: cover;
    width: max-content;

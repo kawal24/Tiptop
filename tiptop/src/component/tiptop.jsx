@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
+// import Image1 from "./Images/Image1.jpg";
+// import Image2 from "./Images/Image2.jpg";
+// import Image3 from "./Images/Image3.jpg";
+
 // import { useAtom } from "jotai";
 // import { globaldata } from "./store";
-// import Nature from "../Images/Nature.jpg";
+
 const Tiptop = () => {
   const [bestseller, setBestseller] = useState([]);
 
@@ -14,13 +18,33 @@ const Tiptop = () => {
 
   const [hovertrending, setHoverTrending] = useState(null);
 
-  const [images, setImages] = useState(0);
+  const [images, setImages] = useState([
+    <img
+      src="/public/Images/Image1.jpg"
+      alt="hi"
+      className="h-[50vh] w-[20%]"
+    />,
+    <img src="/Images/Image2.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image3.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image4.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image5.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image6.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image7.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    <img src="/Images/Image8.jpg" alt="" className="h-[50vh] w-[20%]" />,
+  ]);
+  // console.log(images);
 
-  // const sliderImages = [Nature.jpg];
-  // console.log(sliderImages);
-  // const nextSlide = () => {
-  //   setImages((images + 1) % sliderImages.length);
-  // };
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
 
   const getImgage = bestseller?.filter((elm) => {
     const getImages1 = elm.popular === "true";
@@ -37,12 +61,12 @@ const Tiptop = () => {
     axios
       .get("data.json")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setBestseller(res?.data);
         setNowtrending(res?.data);
       })
       .catch((err) => {
-        console.log("err", err);
+        // console.log("err", err);
       });
     AOS.init({ durarion: "1000", delay: "5s", easeing: " ease-out" });
   }, [setBestseller]);
@@ -104,7 +128,7 @@ const Tiptop = () => {
         </div>
 
         <div className=" grid  grid-flow-col gap-4 ">
-          <div className="grid  grid-flow-col gap-5">
+          <div className="flex-wrap	flex h-[30vh]  w-[100%]  gap-6 grid grid-cols-5  ml-6  ">
             {getImgage
               .slice(-5, 9)
 
@@ -116,7 +140,7 @@ const Tiptop = () => {
                   >
                     {/* <div>{elm?.id}</div> */}
                     <div
-                      className="   h-[50vh] w-[80%]  border border-red-500"
+                      className="   h-[50vh] w-[80%]"
                       onMouseEnter={() => setHoverImg(index)}
                       onMouseLeave={() => setHoverImg(null)}
                     >
@@ -132,7 +156,7 @@ const Tiptop = () => {
                         <div>{elm?.Price}</div>
                         {/* </div> */}
 
-                        <div className="flex justify-center text-center    ">
+                        <div className="flex justify-center text-center mt-6 ">
                           {hoverImg === index && (
                             <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black mt-5 hover:text-white ">
                               Add to Card
@@ -147,7 +171,7 @@ const Tiptop = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-5  text-center">
+        <div className="flex justify-center   text-center mt-56">
           <button className=" border  border-black px-6 py-2 hover:bg-black hover:text-white text-xs font-bold">
             Shop Best Sellers
           </button>
@@ -207,9 +231,9 @@ const Tiptop = () => {
         </div>
 
         <div>
-          <div className="grid  grid-flow-col gap-4 ">
+          <div className="flex-wrap	flex h-[30vh]  w-[100%]  gap-6 grid grid-cols-6  ml-6  ">
             {trendingimg
-              .slice(1, 8)
+              .slice(1, 7)
               // .filter((elm) => elm.id >= "Eyes_3" && elm.id <= "Eyes_7")
               .map((elm, index) => (
                 <div key={elm.id}>
@@ -229,7 +253,7 @@ const Tiptop = () => {
                           <div className="text-black">{elm?.name}</div>
                           <div>{elm?.Price}</div>
                         </div>
-                        <div>{elm?.popular}</div>
+                        {/* <div>{elm?.popular}</div> */}
                         <div className="flex justify-center text-center  ">
                           {hovertrending === index && (
                             <button className=" border  py-2 px-5 text-black hover:bg-black  hover:text-white">
@@ -242,19 +266,6 @@ const Tiptop = () => {
 
                     {/*  */}
                   </div>
-
-                  {/* <div className="flex flex-col justify-center text-center mt-6 ">
-                    <div className="text-black">{elm?.name}</div>
-                    <div>{elm?.Price}</div>
-                  </div>
-                  <div>{elm?.popular}</div>
-                  <div className="flex justify-center text-center  ">
-                    {hovertrending === index && (
-                      <button className=" border py-2 px-5 text-black hover:bg-black  hover:text-white">
-                        Add to Card
-                      </button>
-                    )}
-                  </div> */}
                 </div>
               ))}
           </div>
@@ -421,25 +432,45 @@ const Tiptop = () => {
           <p>@beauty.store</p>
         </div>
         {/* images */}
-        {/* <div>
-          <div className="border  border-green-500 h-[50vh]">
-            {setImages?.map((elm, index) => (
-              <div key={index}>
-                <div className=" ">
-                  <img src={elm} alt="" className=" " />
-                  <div> </div>
-                </div>
-              </div>
-            ))}
+        <div className="">
+          <div className="border  border-green-500 h-[50vh] flex mt-10 absolate">
+            {images.map((image, index) => image)}
           </div>
-          <div>
-            <button onClick={nextSlide}>Next Slide</button>
-          </div>
-        </div> */}
-      </div>
 
+          <div className="flex  justify-between relative bottom-48  ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-chevron-left"
+              viewBox="0 0 16 16"
+              onClick={handleNext}
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-chevron-right"
+              viewBox="0 0 16 16"
+              onClick={handlePrev}
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      {/* alt={`Slide ${index + 1}`} */}
       {/* 9 */}
-      <div></div>
     </div>
   );
 };

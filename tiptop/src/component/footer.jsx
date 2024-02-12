@@ -30,10 +30,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        {/* 2 */}
+        // {/* 2 */}
         <div className="h-[80vh] w-full border-t-2 bg-black text-white ">
           <div className="flex justify-around mt-24" data-aos="fade-right">
-            {/* shop */}
+            // {/* shop */}
             <div className="">
               <b className="font-bold text-2xl">Shop</b>
               <div className="list-none leading-8 text-xs">
@@ -75,8 +75,7 @@ const Footer = () => {
                 FAQ
               </div>
             </div>
-
-            {/* Customer Service */}
+            // {/* Customer Service */}
             <div>
               <p className=" font-bold text-2xl">Customer Service</p> <br />
               <div>

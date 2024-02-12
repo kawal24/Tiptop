@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
 // import Navbar from "./navbar";
 import { NavigationTitle } from "./navbardata";
+import axios from "axios";
 const Shopall = () => {
+  const [shopall, setShopall] = useState([]);
+
+  const [hoverImg, setHoverImg] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("data.json")
+      .then((res) => {
+        // console.log("res", res);
+        setShopall(res?.data);
+      })
+      .catch((err) => {
+        // console.log("err", err);
+      });
+  }, [setShopall]);
   return (
-    <div className=" border h-[100vh]   relative">
+    <div className="     ">
       <div className="flex ">
         {/* 1 */}
-        <div className="border border-black h-[100vh] w-[15%] mt-24 fixed ">
-          <div className="flex  mt-6 ml-4 gap-2">
+        <div className=" h-[100vh] w-[15%] mt-16">
+          <div className="flex  flex-row mt-6 ml-4 gap-2">
             <p>Home</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,10 +41,13 @@ const Shopall = () => {
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
               />
             </svg>
-            <p>All Products </p>
+            <div className="flex gap-2">
+              <p>All </p>
+              <p>Products</p>
+            </div>
           </div>
 
-          <div className="border-2 w-36 h-60 cursor-pointer mt-6 flex flex-col  justify-start items-center  gap-4">
+          <div className=" w-36 h-60 cursor-pointer mt-6 flex flex-col  justify-start items-center  gap-4">
             <div className="">
               <div className="  ">Browse by</div>
               <div className="w-[220%] border-b-2 mt-3"></div>
@@ -55,9 +74,9 @@ const Shopall = () => {
         </div>
 
         {/* 2 */}
-        <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-80">
+        <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-20  relative right-10">
           <img
-            className="w-[95%] h-[50vh]  "
+            className="w-screen h-[50vh]  "
             src=" https://static.wixstatic.com/media/2e2a49_d8f32742409844c59aefab5e448d83be~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_d8f32742409844c59aefab5e448d83be~mv2.jpg"
             alt=""
           />
@@ -70,9 +89,48 @@ const Shopall = () => {
             <p className="text-xs flex   ">6 Products</p>
           </div>
 
-          <div className=" mt-10">
-            <div className="border border-green-500 h-[90vh] w-[100%]   ">
-              hjk
+          <div className=" mt-10 relative h-full w-ful  ">
+            <div className=" ">
+              <div className="">
+                <div className="flex-wrap	flex h-[30vh]  w-[100%]  gap-10 grid grid-cols-5 gap-y-36 ">
+                  {shopall
+                    // .slice(-5, 9)
+
+                    ?.map((elm, index) => (
+                      <div key={elm?.id}>
+                        <div className=" h-[30vh] w-[80%]   w-full ">
+                          <div
+                            className="border "
+                            onMouseEnter={() => setHoverImg(index)}
+                            onMouseLeave={() => setHoverImg(null)}
+                          >
+                            <img
+                              src={hoverImg === index ? elm.img2 : elm.img}
+                              alt={elm.name}
+                              className="  bg-cover h-[25vh] w-[100%]   "
+                              // loading="lazy"
+                              // border-red-500
+                            />
+                            {/* </div> */}
+
+                            <div className="flex flex-col justify-center text-center mr-6 ">
+                              <div className="text-black">{elm?.name}</div>{" "}
+                              <div>{elm?.Price}</div>
+                              {/* </div> */}
+                              <div className="flex justify-center text-center    ">
+                                {hoverImg === index && (
+                                  <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black  hover:text-white ">
+                                    Add to Card
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

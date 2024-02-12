@@ -32,7 +32,7 @@ function App() {
         <Route path="/eyes" element={<Eyespage />} />
       </Routes>
 
-      <div>{/* <Footer /> */}</div>
+      <div className="">{/* <Footer /> */}</div>
     </div>
   );
 }
