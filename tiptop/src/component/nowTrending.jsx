@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
+import axios from "axios";
 const NowTrending = () => {
+  const [nowtrending, setNowtrending] = useState([]);
+
+  const [hovernowtrnding, setHovernowtrnding] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("data.json")
+      .then((res) => {
+        console.log(res);
+        setNowtrending(res?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return (
-    <div className=" border h-[100vh]   relative">
+    <div className="   ">
       <div className="flex ">
         {/* 1 */}
-        <div className="h-[100vh] w-[15%] mt-24 fixed ">
+        <div className="h-[100vh] w-[15%] mt-16 ">
           <div className="flex  mt-6 ml-4 gap-2">
             <p>Home</p>
             <svg
@@ -53,24 +69,53 @@ const NowTrending = () => {
         </div>
 
         {/* 2 */}
-        <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-80">
+        <div className="flex     w-[100%] flex-col  mt-36 ml-20 relative right-10">
           <img
-            className="w-[95%] h-[50vh]  "
+            className="w-screen h-[50vh]  "
             src=" https://static.wixstatic.com/media/2e2a49_cad6f2e23e5345928667147c8a695e14~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_cad6f2e23e5345928667147c8a695e14~mv2.jpg"
             alt=""
           />
 
-          <div className="flex flex-col justify-start  gap-20   mt-20">
-            <b className=" flex justify-satrt font-Cambria text-5xl  ">
-              All Products
+          <div className="flex flex-col justify-start  gap-20   mt-6">
+            <b className=" flex justify-satrt font-serif text-5xl  ">
+              Now Trending
             </b>
 
-            <p className="text-xs flex   ">6 Products</p>
+            <p className="text-xs flex   ">5 Products</p>
           </div>
 
           <div className=" mt-10">
-            <div className="border border-green-500 h-[90vh] w-[100%]   ">
-              hjk
+            <div className=" h-[100vh] w-[100%]   ">
+              <div className="flex flex-wrap h-[100vh] grid grid-rows-2  grid-cols-5 gap-10">
+                {nowtrending.slice(7, 13)?.map((elm, index) => (
+                  <div
+                    className=""
+                    onMouseEnter={() => setHovernowtrnding(index)}
+                    onMouseLeave={() => setHovernowtrnding(null)}
+                  >
+                    <img
+                      src={hovernowtrnding === index ? elm.img2 : elm.img}
+                      alt=""
+                      className="bg-cover h-[25vh] w-[100%]"
+                    />
+                    <div className="flex flex-col justify-center text-center">
+                      <div>{elm.name}</div>
+                      <div>{elm.Price}</div>
+                    </div>
+
+                    <div className="flex justify-center text-center ">
+                      {hovernowtrnding === index && (
+                        <button
+                          className="
+                            border  flex  border-black  mt-5 px-4 py-3 ml-6 hover:bg-black hover:text-white"
+                        >
+                          Add to card
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

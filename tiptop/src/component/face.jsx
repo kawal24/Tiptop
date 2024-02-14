@@ -10,14 +10,14 @@ const Facepage = () => {
     const faceimages1 = elm.popular === "false";
     return faceimages1;
   });
-  console.log(faceimages);
+  // console.log(faceimages);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("data.json")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setFaceProducts(res.data);
       })
       .catch((err) => {
@@ -25,10 +25,10 @@ const Facepage = () => {
       });
   });
   return (
-    <div className="  h-[100vh]   relative">
+    <div className="border">
       <div className="flex ">
         {/* 1 */}
-        <div className="h-[100vh] w-[15%] mt-16 ">
+        <div className=" w-[15%] mt-16 ">
           <div className="flex  mt-6 ml-4 gap-2">
             <p>Home</p>
             <svg
@@ -74,7 +74,7 @@ const Facepage = () => {
         </div>
 
         {/* 2 */}
-        <div className="flex  h-[100vh]  w-[100%] flex-col  mt-36 ml-36  relative right-10 ">
+        <div className="flex   w-[100%] flex-col  mt-36 ml-36  relative right-10 ">
           <img
             className="w-screen h-[50vh]  "
             src=" https://static.wixstatic.com/media/2e2a49_10c614d89f2c46ce98a15cfc0b5909f3~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_10c614d89f2c46ce98a15cfc0b5909f3~mv2.jpg"
@@ -87,9 +87,9 @@ const Facepage = () => {
             <p className="text-xs flex   ">6 Products</p>
           </div>
 
-          <div className=" mt-10 relative ">
+          <div className=" mt-10 relative">
             <div className="  ">
-              <div className="flex flex-wrap  h-[40vh] w-[100%] gap-10 grid grid-cols-5 ">
+              <div className="flex flex-wrap  h-[100vh] w-[100%] gap-10 grid  grid-rows-2 grid-cols-5 ">
                 {faceimages.slice(3, 9)?.map((elm, index) => (
                   <div
                     className=""

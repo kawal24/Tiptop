@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useAtom } from "jotai";
+import { globaldata } from "../store";
 // import Image1 from "./Images/Image1.jpg";
 // import Image2 from "./Images/Image2.jpg";
 // import Image3 from "./Images/Image3.jpg";
@@ -35,6 +37,7 @@ const Tiptop = () => {
   // console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [, setAlProductsdata] = useAtom(globaldata);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -62,6 +65,7 @@ const Tiptop = () => {
       .get("data.json")
       .then((res) => {
         // console.log(res);
+        setAlProductsdata(res?.data);
         setBestseller(res?.data);
         setNowtrending(res?.data);
       })

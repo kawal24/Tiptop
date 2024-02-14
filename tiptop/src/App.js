@@ -10,7 +10,8 @@ import Facepage from "./component/face";
 import Lipspage from "./component/lips";
 import Eyespage from "./component/eyes";
 import Tiptop from "./component/tiptop";
-// import Footer from "./component/footer";
+import NowTrending from "./component/nowTrending";
+import Footer from "./component/footer";
 // import Sidebar from "./component/sidebar";
 
 function App() {
@@ -30,9 +31,12 @@ function App() {
         <Route path="/face" element={<Facepage />} />
         <Route path="/lips" element={<Lipspage />} />
         <Route path="/eyes" element={<Eyespage />} />
+        <Route path="/now-trending" element={<NowTrending />} />
       </Routes>
 
-      <div className="">{/* <Footer /> */}</div>
+      <div className=" ">
+        <Footer />
+      </div>
     </div>
   );
 }

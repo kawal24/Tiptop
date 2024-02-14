@@ -11,7 +11,7 @@ const Bestsellers = () => {
     const bestseller1 = elm.popular === "true";
     return bestseller1;
   });
-  console.log(bestsellerimages);
+  // console.log(bestsellerimages);
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Bestsellers = () => {
     axios
       .get("data.json")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setBestseller(res?.data);
       })
       .catch((err) => {
@@ -29,10 +29,10 @@ const Bestsellers = () => {
 
   return (
     <div>
-      <div className=" border h-[100vh]   relative">
+      <div className=" border   ">
         <div className="flex ">
           {/* 1 */}
-          <div className="h-[100vh] w-[15%] mt-16  ">
+          <div className=" w-[15%] mt-16  ">
             <div className="flex  mt-6 ml-4 gap-2">
               <p>Home</p>
               <svg
@@ -81,7 +81,7 @@ const Bestsellers = () => {
           </div>
 
           {/* 2 */}
-          <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-20 relative right-10 ">
+          <div className="flex  w-[100%] flex-col  mt-36 ml-20 relative right-10 ">
             <img
               className="w-screen h-[50vh]  "
               src="https://static.wixstatic.com/media/2e2a49_22e45f736c9945d98ff9a2e3cd56090c~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_22e45f736c9945d98ff9a2e3cd56090c~mv2.jpg"
@@ -96,9 +96,9 @@ const Bestsellers = () => {
               <p className="text-xs flex   ">6 Products</p>
             </div>
 
-            <div className=" mt-10  relative h-[80vh] w-full">
-              <div className="   ">
-                <div className=" flex-wrap flex  h-[40vh] w-[100%]  gap-10 grid grid-cols-5 gap-y-28 mt-5">
+            <div className=" mt-10  ">
+              <div className=" ">
+                <div className=" flex-wrap flex h-[100vh] w-[100%]  gap-10 grid  grid-rows-2 grid-cols-5 gap-y-28 mt-5">
                   {bestsellerimages.slice(1, 7)?.map((elm, index) => (
                     <div
                       className=" "

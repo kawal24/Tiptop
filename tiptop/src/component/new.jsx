@@ -12,7 +12,7 @@ const Newpage = () => {
     const showimages = elm.category === "Eye";
     return showimages;
   });
-  console.log(newimages);
+  // console.log(newimages);
 
   useEffect(() => {
     axios
@@ -28,7 +28,7 @@ const Newpage = () => {
   return (
     <div>
       {/* 1 */}
-      <div className=" h-[100vh]   relative">
+      <div className=" ">
         <div className="flex ">
           {/* 1 */}
           <div className="h-[100vh] w-[15%] mt-16  ">
@@ -80,14 +80,14 @@ const Newpage = () => {
           </div>
 
           {/* 2 */}
-          <div className="flex    h-[100vh]  w-[100%] flex-col  mt-36 ml-20 relative right-10 ">
+          <div className="flex   w-[100%] flex-col  mt-36 ml-20 relative right-10 ">
             <img
               className="w-screen  h-[50vh]  "
               src=" https://static.wixstatic.com/media/2e2a49_37afad752477458cbc7a9b205e02caae~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_37afad752477458cbc7a9b205e02caae~mv2.jpg"
               alt=""
             />
 
-            <div className="flex flex-col justify-start  gap-20   mt-20">
+            <div className="flex flex-col justify-start  gap-20   mt-6">
               <b className=" flex justify-satrt font-Cambria text-5xl  ">
                 All Products
               </b>
@@ -96,13 +96,13 @@ const Newpage = () => {
             </div>
 
             <div className=" mt-10">
-              <div className=" h-[50vh] w-[100%]   ">
-                <div className="flex flex-wrap h-[40vh] w-[100%] gap-10 grid grid-cols-5 gap-y-28">
-                  {newimages.slice(1, 6)?.map((elm, index) => (
+              <div className=" ">
+                <div className="flex flex-wrap h-[100vh] w-[100%] gap-10  grid  grid-rows-2 grid-cols-5 gap-y-16">
+                  {newimages.slice(1, 7)?.map((elm, index) => (
                     <div key={elm.id}>
                       <div className="">
                         <div
-                          className=" border"
+                          className=""
                           onMouseEnter={() => setHoverNewProducts(index)}
                           onMouseLeave={() => setHoverNewProducts(null)}
                         >
@@ -114,8 +114,8 @@ const Newpage = () => {
                             className="bg-cover h-[25vh] w-[100%]"
                           />
 
-                          <div className="">
-                            <div>{elm?.name}</div>
+                          <div className="flex justify-center flex-col text-center">
+                            <div className="">{elm?.name}</div>
                             <div className="flex justify-center">
                               {elm.Price}
                             </div>
@@ -124,7 +124,7 @@ const Newpage = () => {
                           <div className="flex justify-center text-center ">
                             {hovernewproducts === index && (
                               <button
-                                className="border  flex  border-black  px-4 py-3 ml-6 hover:bg-black 
+                                className="border  mt-10 flex  border-black  px-4 py-3 ml-6 hover:bg-black 
                                hover:text-white"
                               >
                                 Add to card
