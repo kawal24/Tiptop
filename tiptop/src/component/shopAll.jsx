@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 // import Navbar from "./navbar";
 import { NavigationTitle } from "./navbardata";
 import axios from "axios";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+import Products from "./Products";
 const Shopall = () => {
   const [shopall, setShopall] = useState([]);
-
-  const [hoverImg, setHoverImg] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,8 +81,8 @@ const Shopall = () => {
             alt=""
           />
 
-          <div className="flex flex-col justify-start  gap-20   mt-16">
-            <b className=" flex justify-satrt font-Cambria text-5xl  ">
+          <div className="flex flex-col justify-start  gap-20   mt-6">
+            <b className=" flex justify-satrt font-serif text-5xl  ">
               All Products
             </b>
 
@@ -97,35 +97,14 @@ const Shopall = () => {
                     // .slice(-5, 9)
 
                     ?.map((elm, index) => (
-                      <div key={elm?.id}>
-                        <div className=" h-[30vh] w-[80%]   w-full ">
-                          <div
-                            className="border "
-                            onMouseEnter={() => setHoverImg(index)}
-                            onMouseLeave={() => setHoverImg(null)}
-                          >
-                            <img
-                              src={hoverImg === index ? elm.img2 : elm.img}
-                              alt={elm.name}
-                              className="  bg-cover h-[25vh] w-[100%]   "
-                            />
-                            {/* </div> */}
-
-                            <div className="flex flex-col justify-center text-center mr-6 ">
-                              <div className="text-black">{elm?.name}</div>{" "}
-                              <div>{elm?.Price}</div>
-                              {/* </div> */}
-                              <div className="flex justify-center text-center    ">
-                                {hoverImg === index && (
-                                  <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black  hover:text-white ">
-                                    Add to Card
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <Products
+                        id={elm?.id}
+                        name={elm?.name}
+                        Price={elm?.Price}
+                        index={elm?.index}
+                        img2={elm?.img2}
+                        img={elm?.img}
+                      />
                     ))}
                 </div>
               </div>

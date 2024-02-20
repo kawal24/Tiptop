@@ -1,42 +1,52 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Footer = () => {
+  useEffect(() => {
+    AOS.init({ durarion: "1000", delay: "5s", easeing: " ease-out" });
+  });
   return (
-    <div className="border border-red-500 w-full">
+    <div className="border border-red-500 w-full relative">
       <div>
         {/* 1 */}
-        <div className=" bg-black text-white  py-5">
+        <div className=" bg-black text-white  py-5 h-[50vh] ">
           <div className="flex justify-center  gap-5 mt-10 ">
             <p className=" text-5xl font-serif">Are you on </p>
             <span className="text-4xl mt-2">
               <i>the list?</i>
             </span>
           </div>
-          <div className="flex  flex-col justify-center  mt-6  w-[70%] ml-96 ">
-            <p className="ml-52" data-aos="fade-up ">
+          <div className=" mt-6   flex justify-center text-center">
+            <div className=" " data-aos="fade-up">
               Join to get exclusive offers & discounts{" "}
-            </p>
-            <div className="mt-10 ml-20" data-aos="fade-up">
-              <label className=" text-xs">Enter your email here</label>
-              <br />
-              <input
-                type="email"
-                placeholder="Email"
-                className="border h-[7vh] px-2 w-[50%] text-sm bg-black text-white  "
-              />
-              <button className="border px-8 py-3 bg-white text-black hover:text-white hover:bg-black">
-                Join
-              </button>
+              <div className="  mt-10">
+                <div className="" data-aso="fade-up">
+                  <label>Enter your email here</label>
+                  <br />
+                  <input
+                    type="email"
+                    className="px-40 py-2 border border-white bg-black"
+                  />
+                  <button className=" border bg-white  text-black px-6 py-2 ">
+                    join
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         {/* 2 */}
         <div className="h-[80vh] w-full border-t-2 bg-black text-white ">
-          <div className="flex justify-around mt-24" data-aos="fade-right">
+          <div className="flex justify-around mt-24">
             {/* shop */}
             <div className="">
-              <b className="font-bold text-2xl">Shop</b>
-              <div className="list-none leading-8 text-xs">
+              <b className="font-bold text-2xl" data-aso=" fade-left">
+                Shop
+              </b>
+              <div
+                className="list-none leading-8 text-xs"
+                data-aso=" fade-left"
+              >
                 <li>All Products</li>
                 <li>New</li>
                 <li>BestSellers </li>
@@ -46,7 +56,7 @@ const Footer = () => {
               </div>
             </div>
             {/* our store */}
-            <div>
+            <div className="" data-aso=" fade-left">
               <p className="font-bold text-2xl">Our Store</p>
               <br />
               <div>
@@ -68,7 +78,7 @@ const Footer = () => {
             <div>
               <p className="font-bold text-2xl">Policy</p>
               <br />
-              <div className="text-xs leading-5 indent-8">
+              <div className="text-xs leading-5">
                 Shipping & Returns <br />
                 Store Policy <br />
                 Payment Methods <br />
@@ -84,7 +94,7 @@ const Footer = () => {
                   Tel: 123-456-7890 <br />
                   Email: info@mysite.com
                 </p>
-                <div className="flex gap-5 mt-5 ml-10">
+                <div className="flex gap-5 mt-5 ">
                   {/* insta */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

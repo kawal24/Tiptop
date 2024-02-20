@@ -4,14 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useAtom } from "jotai";
 import { globaldata } from "../store";
-// import Image1 from "./Images/Image1.jpg";
-// import Image2 from "./Images/Image2.jpg";
-// import Image3 from "./Images/Image3.jpg";
 
-// import { useAtom } from "jotai";
-// import { globaldata } from "./store";
-
-const Tiptop = () => {
+const Tiptop = ({ image }) => {
   const [bestseller, setBestseller] = useState([]);
 
   const [hoverImg, setHoverImg] = useState(null);
@@ -20,20 +14,7 @@ const Tiptop = () => {
 
   const [hovertrending, setHoverTrending] = useState(null);
 
-  const [images, setImages] = useState([
-    <img
-      src="/public/Images/Image1.jpg"
-      alt="hi"
-      className="h-[50vh] w-[20%]"
-    />,
-    <img src="/Images/Image2.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image3.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image4.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image5.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image6.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image7.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    <img src="/Images/Image8.jpg" alt="" className="h-[50vh] w-[20%]" />,
-  ]);
+  const [images, setImages] = useState([]);
   // console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,6 +49,7 @@ const Tiptop = () => {
         setAlProductsdata(res?.data);
         setBestseller(res?.data);
         setNowtrending(res?.data);
+        setImages(res.images);
       })
       .catch((err) => {
         // console.log("err", err);
@@ -77,7 +59,7 @@ const Tiptop = () => {
   return (
     <div>
       {/* 1 */}
-      <div className="relative">
+      <div className="">
         <div className="imgtext">
           <div
             className=" flex flex-col justify-center z-10 text-white "
@@ -184,7 +166,7 @@ const Tiptop = () => {
 
       {/* 3 */}
       <div className="border w-[100%] h-[100vh]   ">
-        <div className="w-[60%] h-[80vh] border border-green-500  relative  top-20 bg-black">
+        <div className="w-[60%] h-[80vh]   relative  top-20 bg-black">
           <div className="hotspicy ">
             <div className="text-white " data-aos="fade-up">
               <p className="text-sl font-ui-monospace tracking-widest	">
@@ -222,7 +204,7 @@ const Tiptop = () => {
         </div>
       </div>
       {/* 4 */}
-      <div className="border w-[100%] h-[80vh] border-red-500">
+      <div className="w-[100%] h-[80vh] ">
         <div
           className="flex flex-col justify-center text-center py-8"
           data-aos="fade-right"
@@ -277,7 +259,7 @@ const Tiptop = () => {
       </div>
 
       {/* 5 */}
-      <div className="border w-[100%] h-[100vh] border-green-500  relative">
+      <div className=" w-[100%] h-[100vh]   relative">
         <div className="flex justify-center gap-5 py-5 " data-aos="fade-up">
           <p className="text-4xl font-serif	 font-bold "> Discover</p>
           <i className="text-4xl font-serif ">More</i>
@@ -437,9 +419,7 @@ const Tiptop = () => {
         </div>
         {/* images */}
         <div className="">
-          <div className="border  border-green-500 h-[50vh] flex mt-10 absolate">
-            {images.map((image, index) => image)}
-          </div>
+          {/* s */}
 
           <div className="flex  justify-between relative bottom-48  ">
             <svg
@@ -476,6 +456,19 @@ const Tiptop = () => {
       {/* alt={`Slide ${index + 1}`} */}
       {/* 9 */}
     </div>
+
+    // {/* // <img
+    //   src="/public/Images/Image1.jpg"
+    //   alt="hi"
+    //   className="h-[50vh] w-[20%]"
+    // />,
+    // <img src="/Images/Image2.jpg" alt="images" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image3.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image4.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image5.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image6.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image7.jpg" alt="" className="h-[50vh] w-[20%]" />,
+    // <img src="/Images/Image8.jpg" alt="" className="h-[50vh] w-[20%]" />, */}
   );
 };
 export default Tiptop;

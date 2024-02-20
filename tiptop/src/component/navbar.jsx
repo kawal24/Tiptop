@@ -8,14 +8,14 @@ const Navbar = () => {
   return (
     <div className="mainnavbar">
       <div
-        className="font-bold text-3xl text-white  mr-96 "
+        className="font-bold text-3xl text-white absolate left-5 "
         onClick={() => {
           navigate("/");
         }}
       >
         Tiptop
       </div>
-      <div className="flex  gap-10  mr-36">
+      <div className="  flex  gap-10  ">
         {NavigationTitle.map((elm) => (
           <div>
             <div

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { NavigationTitle } from "./navbardata";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Products from "./Products";
 const Bestsellers = () => {
   const [bestseller, setBestseller] = useState([]);
 
-  const [hoverbestseller, setHoverBestseller] = useState([null]);
+  // const [hoverbestseller, setHoverBestseller] = useState([null]);
 
   const bestsellerimages = bestseller?.filter((elm) => {
     const bestseller1 = elm.popular === "true";
@@ -88,7 +89,7 @@ const Bestsellers = () => {
               alt=" "
             />
 
-            <div className="flex flex-col justify-start  gap-20   mt-20">
+            <div className="flex flex-col justify-start  gap-20   mt-6">
               <b className=" flex justify-satrt font-serif	 text-5xl  ">
                 Best Sellers
               </b>
@@ -100,32 +101,14 @@ const Bestsellers = () => {
               <div className=" ">
                 <div className=" flex-wrap flex h-[100vh] w-[100%]  gap-10 grid  grid-rows-2 grid-cols-5 gap-y-28 mt-5">
                   {bestsellerimages.slice(1, 7)?.map((elm, index) => (
-                    <div
-                      className=" "
-                      onMouseEnter={() => setHoverBestseller(index)}
-                      onMouseLeave={() => setHoverBestseller(null)}
-                    >
-                      <img
-                        src={hoverbestseller === index ? elm.img2 : elm.img}
-                        alt={elm.name}
-                        className="bg-cover h-[25vh] w-[100%]  "
-                      />
-                      <div className="">
-                        <div className=" flex justify-center">{elm.name}</div>
-                        <div className="flex justify-center ">{elm.Price}</div>
-                      </div>
-
-                      <div className="flex justify-center text-center">
-                        {hoverbestseller === index && (
-                          <button
-                            className="
-                            border  flex  border-black  px-4 py-3 ml-6 hover:bg-black hover:text-white"
-                          >
-                            Add to card
-                          </button>
-                        )}
-                      </div>
-                    </div>
+                    <Products
+                      id={elm?.id}
+                      name={elm?.name}
+                      Price={elm?.Price}
+                      index={elm?.index}
+                      img2={elm?.img2}
+                      img={elm?.img}
+                    />
                   ))}
                 </div>
               </div>

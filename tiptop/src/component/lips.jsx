@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
 import axios from "axios";
+import Products from "./Products";
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 const Lipspage = () => {
   const [lipspage, setLipsPage] = useState([]);
-  const [hoverlipstick, setHoverLipstick] = useState(null);
 
   // const lipstickimages = lipspage?.filter((elm) => {
   //   const lipstick = elm.category === "Lips";
@@ -95,32 +95,14 @@ const Lipspage = () => {
             <div className=" h-[100vh] w-[100%]   ">
               <div className="flex flex-wrap  h-[100vh] w-[100%] gap-10  grid grid-rows-2 grid-cols-5">
                 {lipspage.slice(1, 7)?.map((elm, index) => (
-                  <div
-                    className=""
-                    onMouseEnter={() => setHoverLipstick(index)}
-                    onMouseLeave={() => setHoverLipstick(null)}
-                  >
-                    <img
-                      src={hoverlipstick === index ? elm.img2 : elm.img}
-                      alt=""
-                      className=" bg-cover h-[25vh] w-[100%]"
-                    />
-                    <div className="flex justify-center text-center flex-col">
-                      <div>{elm.name}</div>
-                      <div>{elm.Price}</div>
-                    </div>
-
-                    <div className="flex justify-center text-center ">
-                      {hoverlipstick === index && (
-                        <button
-                          className="
-                            border  flex  border-black  mt-5 px-4 py-3 ml-6 hover:bg-black hover:text-white"
-                        >
-                          Add to card
-                        </button>
-                      )}
-                    </div>
-                  </div>
+                  <Products
+                    id={elm?.id}
+                    name={elm?.name}
+                    Price={elm?.Price}
+                    index={elm?.index}
+                    img2={elm?.img2}
+                    img={elm?.img}
+                  />
                 ))}
               </div>
             </div>

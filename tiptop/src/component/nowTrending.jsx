@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
 import axios from "axios";
+import Products from "./Products";
 const NowTrending = () => {
   const [nowtrending, setNowtrending] = useState([]);
 
-  const [hovernowtrnding, setHovernowtrnding] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -88,32 +88,14 @@ const NowTrending = () => {
             <div className=" h-[100vh] w-[100%]   ">
               <div className="flex flex-wrap h-[100vh] grid grid-rows-2  grid-cols-5 gap-10">
                 {nowtrending.slice(7, 13)?.map((elm, index) => (
-                  <div
-                    className=""
-                    onMouseEnter={() => setHovernowtrnding(index)}
-                    onMouseLeave={() => setHovernowtrnding(null)}
-                  >
-                    <img
-                      src={hovernowtrnding === index ? elm.img2 : elm.img}
-                      alt=""
-                      className="bg-cover h-[25vh] w-[100%]"
-                    />
-                    <div className="flex flex-col justify-center text-center">
-                      <div>{elm.name}</div>
-                      <div>{elm.Price}</div>
-                    </div>
-
-                    <div className="flex justify-center text-center ">
-                      {hovernowtrnding === index && (
-                        <button
-                          className="
-                            border  flex  border-black  mt-5 px-4 py-3 ml-6 hover:bg-black hover:text-white"
-                        >
-                          Add to card
-                        </button>
-                      )}
-                    </div>
-                  </div>
+                  <Products
+                    id={elm?.id}
+                    name={elm?.name}
+                    Price={elm?.Price}
+                    index={elm?.index}
+                    img2={elm?.img2}
+                    img={elm?.img}
+                  />
                 ))}
               </div>
             </div>

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
 import axios from "axios";
+import Products from "./Products";
 const Facepage = () => {
   const [faceproducts, setFaceProducts] = useState([]);
-  const [hoverfaceproducts, setHoverFaceProducts] = useState(null);
 
   const faceimages = faceproducts?.filter((elm) => {
     const faceimages1 = elm.popular === "false";
@@ -81,7 +81,7 @@ const Facepage = () => {
             alt=""
           />
 
-          <div className="flex flex-col justify-start  gap-20   mt-10">
+          <div className="flex flex-col justify-start  gap-20   mt-6">
             <b className=" flex justify-satrt font-serif	 text-5xl  ">Face</b>
 
             <p className="text-xs flex   ">6 Products</p>
@@ -91,32 +91,14 @@ const Facepage = () => {
             <div className="  ">
               <div className="flex flex-wrap  h-[100vh] w-[100%] gap-10 grid  grid-rows-2 grid-cols-5 ">
                 {faceimages.slice(3, 9)?.map((elm, index) => (
-                  <div
-                    className=""
-                    onMouseEnter={() => setHoverFaceProducts(index)}
-                    onMouseLeave={() => setHoverFaceProducts(null)}
-                  >
-                    <img
-                      src={hoverfaceproducts === index ? elm.img2 : elm.img}
-                      alt={elm.name}
-                      className="bg-cover h-[25vh] w-[100%]"
-                    />
-                    <div className=" flex justify-center text-center">
-                      {elm.name}
-                    </div>
-                    <div className="flex justify-center"> {elm.Price}</div>
-
-                    <div className="flex justify-center text-center">
-                      {hoverfaceproducts === index && (
-                        <button
-                          className="
-                            border  flex  border-black  mt-5 px-4 py-3 ml-6 hover:bg-black hover:text-white"
-                        >
-                          Add to card
-                        </button>
-                      )}
-                    </div>
-                  </div>
+                  <Products
+                    id={elm?.id}
+                    name={elm?.name}
+                    Price={elm?.Price}
+                    index={elm?.index}
+                    img2={elm?.img2}
+                    img={elm?.img}
+                  />
                 ))}
               </div>
             </div>
