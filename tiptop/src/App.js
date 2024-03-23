@@ -12,6 +12,9 @@ import Eyespage from "./component/eyes";
 import Tiptop from "./component/tiptop";
 import NowTrending from "./component/nowTrending";
 import Footer from "./component/footer";
+import Cart from "./component/cartPage";
+// import Slider from "./component/Sliderimages";
+
 // import Sidebar from "./component/sidebar";
 
 function App() {
@@ -23,7 +26,6 @@ function App() {
         <Route path="/" element={<Tiptop />} />
       </Routes>
       {/* <NavigationTitle /> */}
-
       <Routes>
         <Route path="/shop-all" element={<Shopall />} />
         <Route path="/new" element={<Newpage />} />
@@ -32,8 +34,9 @@ function App() {
         <Route path="/lips" element={<Lipspage />} />
         <Route path="/eyes" element={<Eyespage />} />
         <Route path="/now-trending" element={<NowTrending />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
-
+      {/* <Slider /> */}
       <div className=" ">
         <Footer />
       </div>

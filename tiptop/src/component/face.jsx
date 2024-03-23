@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
-import axios from "axios";
 import Products from "./Products";
+import axios from "axios";
 const Facepage = () => {
   const [faceproducts, setFaceProducts] = useState([]);
+  const [hoverfaceproducts, setHoverFaceProducts] = useState(null);
 
   const faceimages = faceproducts?.filter((elm) => {
     const faceimages1 = elm.popular === "false";
@@ -81,7 +82,7 @@ const Facepage = () => {
             alt=""
           />
 
-          <div className="flex flex-col justify-start  gap-20   mt-6">
+          <div className="flex flex-col justify-start  gap-20   mt-10">
             <b className=" flex justify-satrt font-serif	 text-5xl  ">Face</b>
 
             <p className="text-xs flex   ">6 Products</p>

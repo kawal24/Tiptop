@@ -8,6 +8,7 @@ import axios from "axios";
 import Products from "./Products";
 const Shopall = () => {
   const [shopall, setShopall] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,7 +75,7 @@ const Shopall = () => {
         </div>
 
         {/* 2 */}
-        <div className="flex     w-[100%] flex-col  mt-36 ml-20  relative right-10">
+        <div className="flex  w-[100%] flex-col  mt-36 ml-20  relative right-10">
           <img
             className="w-screen h-[50vh]  "
             src=" https://static.wixstatic.com/media/2e2a49_d8f32742409844c59aefab5e448d83be~mv2.jpg/v1/fill/w_568,h_300,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/2e2a49_d8f32742409844c59aefab5e448d83be~mv2.jpg"
@@ -92,7 +93,7 @@ const Shopall = () => {
           <div className=" mt-10 ">
             <div className="">
               <div className="h-[250vh] ">
-                <div className="flex-wrap	flex h-[30vh] gap-10 grid grid-cols-5 gap-y-36 ">
+                <div className="flex-wrap	flex  h-[30vh] gap-10 grid grid-cols-5 gap-y-36 ">
                   {shopall
                     // .slice(-5, 9)
 

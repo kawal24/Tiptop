@@ -6,7 +6,7 @@ import Products from "./Products";
 const Bestsellers = () => {
   const [bestseller, setBestseller] = useState([]);
 
-  // const [hoverbestseller, setHoverBestseller] = useState([null]);
+  const [hoverbestseller, setHoverBestseller] = useState([null]);
 
   const bestsellerimages = bestseller?.filter((elm) => {
     const bestseller1 = elm.popular === "true";
@@ -89,7 +89,7 @@ const Bestsellers = () => {
               alt=" "
             />
 
-            <div className="flex flex-col justify-start  gap-20   mt-6">
+            <div className="flex flex-col justify-start  gap-20   mt-20">
               <b className=" flex justify-satrt font-serif	 text-5xl  ">
                 Best Sellers
               </b>

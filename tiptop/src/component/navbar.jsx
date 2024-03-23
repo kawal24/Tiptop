@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
+
 // import { NavigationTitle } from "./navbardata";
 
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="mainnavbar">
+    <div className="w-full h-[10vh]  text-red-500 flex justify-between items-center bg-[#614142] px-20 ">
       <div
         className="font-bold text-3xl text-white absolate left-5 "
         onClick={() => {
@@ -15,7 +16,7 @@ const Navbar = () => {
       >
         Tiptop
       </div>
-      <div className="  flex  gap-10  ">
+      <div className="  flex  gap-10 ">
         {NavigationTitle.map((elm) => (
           <div>
             <div
@@ -31,7 +32,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        <div className="flex gap-5  ml-16 ">
+        <div className="flex gap-5   ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

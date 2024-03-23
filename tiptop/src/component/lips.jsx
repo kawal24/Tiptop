@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
 import axios from "axios";
 import Products from "./Products";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
+
 const Lipspage = () => {
   const [lipspage, setLipsPage] = useState([]);
+  const [hoverlipstick, setHoverLipstick] = useState(null);
 
   // const lipstickimages = lipspage?.filter((elm) => {
   //   const lipstick = elm.category === "Lips";

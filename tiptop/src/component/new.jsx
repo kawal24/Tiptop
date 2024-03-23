@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
-import axios from "axios";
 import Products from "./Products";
+import axios from "axios";
 const Newpage = () => {
   const [newproducts, setNewProducts] = useState([]);
 
@@ -88,8 +88,10 @@ const Newpage = () => {
               alt=""
             />
 
-            <div className="flex flex-col justify-start  gap-20   mt-6  ">
-              <b className=" flex justify-satrt font-serif text-5xl  ">New</b>
+            <div className="flex flex-col justify-start  gap-20   mt-6">
+              <b className=" flex justify-satrt font-Cambria text-5xl  ">
+                All Products
+              </b>
 
               <p className="text-xs flex   ">6 Products</p>
             </div>

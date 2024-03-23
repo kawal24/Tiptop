@@ -1,7 +1,7 @@
-
-.mainnavbar{
-  /* border: 2px solid; */
-  width:100%;
+ 
+/* .mainnavbar{
+  border: 2px solid;
+  width:auto;
   height: 8vh;
   display: flex;
   justify-content:space-around;
@@ -9,10 +9,9 @@
   background-color:#634141;
   cursor: pointer;
   z-index: 50;
-
   position: fixed;
    top:0;  
-}
+}  */
 
 .imgtext{
   display: flex;

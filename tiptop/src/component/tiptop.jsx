@@ -4,8 +4,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useAtom } from "jotai";
 import { globaldata } from "../store";
+// import Sliderimages from "./Sliderimages";
+import { Link } from "react-router-dom";
+import Slider from "./Sliderimages";
 
-const Tiptop = ({ image }) => {
+const Tiptop = () => {
+  // console.log("hii", prop);
   const [bestseller, setBestseller] = useState([]);
 
   const [hoverImg, setHoverImg] = useState(null);
@@ -14,21 +18,11 @@ const Tiptop = ({ image }) => {
 
   const [hovertrending, setHoverTrending] = useState(null);
 
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
   // console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [, setAlProductsdata] = useAtom(globaldata);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
 
   const getImgage = bestseller?.filter((elm) => {
     const getImages1 = elm.popular === "true";
@@ -40,7 +34,7 @@ const Tiptop = ({ image }) => {
     const trending1 = elm.popular === "false";
     return trending1;
   });
-  console.log(trendingimg);
+  // console.log(trendingimg);
   useEffect(() => {
     axios
       .get("data.json")
@@ -49,7 +43,6 @@ const Tiptop = ({ image }) => {
         setAlProductsdata(res?.data);
         setBestseller(res?.data);
         setNowtrending(res?.data);
-        setImages(res.images);
       })
       .catch((err) => {
         // console.log("err", err);
@@ -59,7 +52,7 @@ const Tiptop = ({ image }) => {
   return (
     <div>
       {/* 1 */}
-      <div className="">
+      <div className="min-h-screen">
         <div className="imgtext">
           <div
             className=" flex flex-col justify-center z-10 text-white "
@@ -92,7 +85,7 @@ const Tiptop = ({ image }) => {
         </div>
         <div className=" img">
           <img
-            className="w-screen	 h-[100vh] border border-b-2  mt-2  z-10"
+            className="w-screen	 h-[100vh] border border-b-2   z-10  	1024px md:w-full"
             src="https://static.wixstatic.com/media/2e2a49_db29dbd54f594c648ec3807b118e6718~mv2.jpg/v1/fill/w_794,h_602,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/2e2a49_db29dbd54f594c648ec3807b118e6718~mv2.jpg"
             alt=""
           />
@@ -144,9 +137,11 @@ const Tiptop = ({ image }) => {
 
                         <div className="flex justify-center text-center mt-6 ">
                           {hoverImg === index && (
-                            <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black mt-5 hover:text-white ">
-                              Add to Card
-                            </button>
+                            <Link to="/Cart">
+                              <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black mt-5 hover:text-white ">
+                                Add to Cart
+                              </button>
+                            </Link>
                           )}
                         </div>
                       </div>
@@ -242,9 +237,11 @@ const Tiptop = ({ image }) => {
                         {/* <div>{elm?.popular}</div> */}
                         <div className="flex justify-center text-center  ">
                           {hovertrending === index && (
-                            <button className=" border  py-2 px-5 text-black hover:bg-black  hover:text-white">
-                              Add to Card
-                            </button>
+                            <Link to="/cart">
+                              <button className=" border  py-2 px-5 text-black hover:bg-black  hover:text-white">
+                                Add to Cart
+                              </button>
+                            </Link>
                           )}
                         </div>
                       </div>
@@ -267,7 +264,7 @@ const Tiptop = ({ image }) => {
         {/* 
         
           {/* 1 img */}
-        <div className="relative left-20 top-24 ">
+        <div className="relative left-40 top-24 ">
           <div className=" flex gap-20 ">
             <div className="absolate top-20 left-10 ">
               <img
@@ -305,10 +302,8 @@ const Tiptop = ({ image }) => {
         </div>
 
         <div className="w-[100%] h-[50vh] border  bg-black">
-          <div className="text-white flex justify-around " data-aos="fade-up">
-            <div className="text-5xl font-serif	 font-bold mt-20 ml-10">
-              EYES
-            </div>
+          <div className="text-white flex justify-evenly " data-aos="fade-up">
+            <div className="text-5xl font-serif	 font-bold mt-20">EYES</div>
             <div className="text-5xl font-serif	 font-bold  mt-20 ">EYES</div>
             <div className="text-5xl font-serif	 font-bold  mt-20 ">EYES</div>
           </div>
@@ -417,41 +412,8 @@ const Tiptop = ({ image }) => {
           <p className="text-4xl font-serif	 font-bold ">Follow Us</p>
           <p>@beauty.store</p>
         </div>
-        {/* images */}
-        <div className="">
-          {/* s */}
 
-          <div className="flex  justify-between relative bottom-48  ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              fill="currentColor"
-              class="bi bi-chevron-left"
-              viewBox="0 0 16 16"
-              onClick={handleNext}
-            >
-              <path
-                fill-rule="evenodd"
-                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              fill="currentColor"
-              class="bi bi-chevron-right"
-              viewBox="0 0 16 16"
-              onClick={handlePrev}
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-              />
-            </svg>
-          </div>
-        </div>
+        <div className=""></div>
       </div>
       {/* alt={`Slide ${index + 1}`} */}
       {/* 9 */}

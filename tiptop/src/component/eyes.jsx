@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavigationTitle } from "./navbardata";
-import axios from "axios";
 import Products from "./Products";
+import axios from "axios";
 const Eyespage = () => {
   const [eyeshadow, setEyeshadow] = useState([]);
+  // const [hovereyeshadow, setHovereyeshadow] = useState(null);
 
   // const eyesproducts = eyeshadow.filter((elm) => {
   //   const eyeshadow1 = elm.newProducts === "new";

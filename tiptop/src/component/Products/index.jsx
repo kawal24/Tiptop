@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 const Products = (props) => {
   const { id, name, Price, index, img2, img } = props;
   const [hovernewproducts, setHoverNewProducts] = useState(null);
@@ -7,7 +8,7 @@ const Products = (props) => {
     <div key={id}>
       <div className="">
         <div
-          className=""
+          className="  h-[30vh]"
           onMouseEnter={() => setHoverNewProducts(index)}
           onMouseLeave={() => setHoverNewProducts(null)}
         >
@@ -24,12 +25,14 @@ const Products = (props) => {
 
           <div className="flex justify-center text-center ">
             {hovernewproducts === index && (
-              <button
-                className="border  mt-10 flex  border-black  px-4 py-3 ml-6 hover:bg-black 
+              <Link to="/Cart/id111">
+                <button
+                  className="border  mt-10 flex  border-black  px-4 py-3 ml-6 hover:bg-black 
                  hover:text-white"
-              >
-                Add to card
-              </button>
+                >
+                  Add to cart
+                </button>
+              </Link>
             )}
           </div>
         </div>
