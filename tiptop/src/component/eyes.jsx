@@ -46,7 +46,10 @@ const Eyespage = () => {
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
               />
             </svg>
-            <p>All Products </p>
+            <div className="flex gap-1">
+              <p>All </p>
+              <p>Products</p>
+            </div>
           </div>
 
           <div className=" w-36 h-60 cursor-pointer mt-6 flex flex-col  justify-start items-center  gap-4">

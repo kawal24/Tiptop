@@ -30,7 +30,7 @@ const Newpage = () => {
     <div>
       {/* 1 */}
       <div className=" ">
-        <div className="flex ">
+        <div className="flex  ">
           {/* 1 */}
           <div className="h-[100vh] w-[15%] mt-16  ">
             <div className="flex  mt-6 ml-4 gap-2">

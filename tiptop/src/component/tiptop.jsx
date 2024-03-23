@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 import { globaldata } from "../store";
 // import Sliderimages from "./Sliderimages";
 import { Link } from "react-router-dom";
-import Slider from "./Sliderimages";
+// import Slider from "./Sliderimages";
 
 const Tiptop = () => {
   // console.log("hii", prop);
@@ -407,30 +407,17 @@ const Tiptop = () => {
       </div>
 
       {/* 8 */}
-      <div className="border w-[100%] h-[100vh]">
+      {/* <div className="border w-[100%] h-[100vh]">
         <div className="flex flex-col justify-center text-center py-5">
           <p className="text-4xl font-serif	 font-bold ">Follow Us</p>
           <p>@beauty.store</p>
         </div>
 
         <div className=""></div>
-      </div>
+      </div> */}
       {/* alt={`Slide ${index + 1}`} */}
       {/* 9 */}
     </div>
-
-    // {/* // <img
-    //   src="/public/Images/Image1.jpg"
-    //   alt="hi"
-    //   className="h-[50vh] w-[20%]"
-    // />,
-    // <img src="/Images/Image2.jpg" alt="images" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image3.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image4.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image5.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image6.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image7.jpg" alt="" className="h-[50vh] w-[20%]" />,
-    // <img src="/Images/Image8.jpg" alt="" className="h-[50vh] w-[20%]" />, */}
   );
 };
 export default Tiptop;

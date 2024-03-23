@@ -7,7 +7,7 @@ import { NavigationTitle } from "./navbardata";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-[10vh]  text-red-500 flex justify-between items-center bg-[#614142] px-20 ">
+    <div className="w-full h-[10vh]   text-red-500 flex justify-between items-center bg-[#614142] px-20 ">
       <div
         className="font-bold text-3xl text-white absolate left-5 "
         onClick={() => {
