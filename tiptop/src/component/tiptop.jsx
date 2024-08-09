@@ -132,12 +132,12 @@ const Tiptop = () => {
 
                       <div className="flex flex-col justify-center text-center mt-2 mr-6 ">
                         <div className="text-black">{elm?.name}</div>
-                        <div>{elm?.Price}</div>
+                        <div>${elm?.Price}</div>
                         {/* </div> */}
 
                         <div className="flex justify-center text-center mt-6 ">
                           {hoverImg === index && (
-                            <Link to="/Cart">
+                            <Link to={`/Cart?id=${elm?.id}`}>
                               <button className=" border  flex  border-black  px-4 py-3 ml-6 hover:bg-black mt-5 hover:text-white ">
                                 Add to Cart
                               </button>

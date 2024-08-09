@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Products = (props) => {
   const { id, name, Price, index, img2, img } = props;
   const [hovernewproducts, setHoverNewProducts] = useState(null);
-
+  console.log(id, 88888888888888);
   return (
     <div key={id}>
       <div className="">
@@ -25,7 +25,7 @@ const Products = (props) => {
 
           <div className="flex justify-center text-center ">
             {hovernewproducts === index && (
-              <Link to="/Cart/id111">
+              <Link to={`/Cart?id=${id}`}>
                 <button
                   className="border  mt-10 flex  border-black  px-4 py-3 ml-6 hover:bg-black 
                  hover:text-white"
